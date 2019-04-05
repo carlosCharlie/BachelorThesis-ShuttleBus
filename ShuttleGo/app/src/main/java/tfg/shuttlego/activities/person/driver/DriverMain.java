@@ -49,7 +49,7 @@ public class DriverMain extends AppCompatActivity implements NavigationView.OnNa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.driver_main);
 
-        user = Session.getInstance(getApplicationContext()).getUser();
+        user = Session.getInstance().getUser();
 
         inicializateView();
         setProgressBar();
