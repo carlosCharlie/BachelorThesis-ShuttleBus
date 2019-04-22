@@ -13,5 +13,5 @@
     "firebase-functions": "^2.1.0"
   },
   "private": true,
-  "main": "./src/index.js"
+  "main": "./app/index.js"
 }

@@ -8,7 +8,7 @@
     */
 
     const ERROR = require("../errors/errors");
-    const db = require("./database.js.js");
+    const db = require("./database.js");
 
     function getAllOrigins() {
 
