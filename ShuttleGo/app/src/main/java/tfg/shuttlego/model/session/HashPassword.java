@@ -7,9 +7,10 @@ import java.security.spec.InvalidKeySpecException;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+@SuppressWarnings("JavaDoc")
 public class HashPassword {
 
-    private HashPassword () {}
+    public HashPassword() {}
 
     /**
      * Generate a hash password with salt
@@ -42,8 +43,6 @@ public class HashPassword {
         return validateStrongPasswordHash(inputPassword, storedPassword);
     }
 
-
-
     private static String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
 
         char[] chars = password.toCharArray();
@@ -75,7 +74,6 @@ public class HashPassword {
         else return hex;
     }
 
-
     private static boolean validateStrongPasswordHash(String inputPassword, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
 
         String[] parts = storedPassword.split(":");
@@ -96,7 +94,7 @@ public class HashPassword {
     private static byte[] fromHex(String hex) {
 
         byte[] bytes = new byte[hex.length() / 2];
-        for(int i = 0; i<bytes.length ;i++) bytes[i] = (byte)Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
+        for(int i = 0; i < bytes.length ; i++) bytes[i] = (byte)Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
 
         return bytes;
     }

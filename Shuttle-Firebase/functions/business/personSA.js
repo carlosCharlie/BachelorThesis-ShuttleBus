@@ -11,15 +11,14 @@ const personDAO = require("../dataAccess/personDAO");
  * @return {Promise} A promise with the user data if email and password are correct.
  * @throws {Object} Error
  */
-function signIn(email, password) {
-    return personDAO
-    .getUser(email)
+function signIn(email) {
+
+    return personDAO.getUser(email)
     .then(user => {
         if (user == null) throw ERROR.userDoesntExists;
-        else if (user.password == password) return user;
-        else throw ERROR.incorrectSignin;
+        else return user;
     });
-}//signIn
+}
 
 /**
  * @description Register a new user in the database if not exists and meets the requirements.
@@ -45,22 +44,21 @@ function signUp(newUser){
 /**
  * @description Check the type and if exists the user. (It should be called when getting or editing risk information )
  * @param {Object} user User data.
- * @param {string = null} userType The type of the user that can do that action.
+ * @param {String = null} userType The type of the user that can do that action.
  * @returns {Promise} Promise that returns null or error.
  */
-function checkUser(user,userType = null){
+function checkUser(user, userType = null) {
 
-    return new Promise((resolve,reject)=>{
-        if(user==null)reject(ERROR.necessaryDataIsNull);
+    return new Promise((resolve, reject) => {
+        if(user == null) reject(ERROR.necessaryDataIsNull);
         else resolve();
     })
-    .then(()=>signIn(user.email,user.password))
-    .then((result)=>{
-        if(result == null ||(userType != null &&( result.type == null || result.type != userType)))
-            throw ERROR.noPermissions;
+    .then(() => signIn(user.email))
+    .then((result) => {
+        if(result == null || (userType != null && ( result.type == null || result.type != userType))) throw ERROR.noPermissions;
         else return result;
     });
-}//checkUser
+}
 
 
 

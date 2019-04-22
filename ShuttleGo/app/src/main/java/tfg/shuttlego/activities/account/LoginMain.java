@@ -12,6 +12,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.HashMap;
 import java.util.Objects;
 import tfg.shuttlego.R;
@@ -20,10 +23,12 @@ import tfg.shuttlego.activities.person.driver.DriverMain;
 import tfg.shuttlego.activities.person.passenger.PassengerMain;
 import tfg.shuttlego.model.event.Event;
 import tfg.shuttlego.model.event.EventDispatcher;
+import tfg.shuttlego.model.session.HashPassword;
 import tfg.shuttlego.model.session.Session;
 import tfg.shuttlego.model.transfer.person.Person;
 import tfg.shuttlego.model.transfer.person.TypePerson;
 
+@SuppressWarnings("JavaDoc")
 public class LoginMain extends AppCompatActivity implements View.OnClickListener {
 
     private ProgressBar loginMainProgress;
@@ -93,11 +98,10 @@ public class LoginMain extends AppCompatActivity implements View.OnClickListener
         JSONObject user = new JSONObject();
 
         try {
+
             String email = this.loginMainTextEmail.getText().toString();
-            String password = this.loginMainTextPassword.getText().toString();
 
             json.put("email", email);
-            json.put("password", password);
             user.put("user", json);
 
         } catch (JSONException e) { throwToast(R.string.err); }
@@ -133,13 +137,34 @@ public class LoginMain extends AppCompatActivity implements View.OnClickListener
             }
             else {
 
-                Person user = parserTypePerson(task.getResult());
-                Session.getInstance().setUser(user);
-                startActivity(new Intent(LoginMain.this, this.loginMainNextClass));
-                finish();
+                try {
+
+                    if (validatePassword(task.getResult().get("password"), this.loginMainTextPassword.getText().toString())) {
+
+                        Person user = parserTypePerson(task.getResult());
+                        Session.getInstance().setUser(user);
+                        startActivity(new Intent(LoginMain.this, this.loginMainNextClass));
+                        finish();
+                    }
+                    else throwToast(R.string.errIncorrectSignin);
+
+                } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {throwToast(R.string.err);}
             }
         });
     }
+
+    /**
+     * Validate the the user´s password
+     *
+     * @param storedPassword password saved in data base
+     * @param inputPassword password introduced for current user
+     *
+     * @return the validation os password
+     *
+     * @throws InvalidKeySpecException
+     * @throws NoSuchAlgorithmException
+     */
+    private boolean validatePassword(String storedPassword, String inputPassword) throws InvalidKeySpecException, NoSuchAlgorithmException { return new HashPassword().validatePassword(storedPassword, inputPassword); }
 
     /**
      * Parser the credential to the new user.

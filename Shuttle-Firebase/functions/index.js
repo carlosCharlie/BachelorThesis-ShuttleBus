@@ -42,15 +42,17 @@ const routeSA = require("./business/routeSA");
 
 
 /*---------------- ACCOUNT Functions ---------------*/
+
 /**
  * @description Check the correct login of a user in the application.
  * @returns {Promise} a promise with user data in the correct case and error in the wrong case.
  */
-exports.signin = functions.https.onCall((data, context) =>{
+exports.signin = functions.https.onCall((data, context) => {
+
   return checkData(data)
-  .then(()=>checkUser(data.user))
-  .then(()=>personSA.signIn(data.user.email, data.user.password))
-  .then(result=>result,error=>error);
+  .then(() => checkUser(data.user))
+  .then(() => personSA.signIn(data.user.email))
+  .then(result => result, error => error);
 });
 
 /**
@@ -225,11 +227,12 @@ exports.getRoutePoints = functions.https.onCall((data,conext)=>{
  * @param {*} data from callable functions.
  */
 function checkData(data){
-  return new Promise((resolve,reject)=>{
+
+  return new Promise((resolve,reject) => {
     if(data == null) reject(ERROR.necessaryDataIsNull);
     else resolve();
   });
-}//checkData
+}
 
 /**
  * @description 
@@ -245,8 +248,6 @@ function checkOrigin(origin){
 /**
  * @description Checks if an user exists and the type if it is indicated.
  * @param {Object} user 
- * @param {string = null} userType 
+ * @param {String = null} userType 
  */
-function checkUser(user,userType = null){
-  return personSA.checkUser(user,userType);
-}//checkUser
+function checkUser(user, userType = null){ return personSA.checkUser(user, userType); }

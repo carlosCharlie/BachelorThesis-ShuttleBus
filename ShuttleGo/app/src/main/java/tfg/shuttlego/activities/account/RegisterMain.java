@@ -15,16 +15,21 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.Objects;
 import tfg.shuttlego.R;
 import tfg.shuttlego.activities.person.driver.DriverMain;
 import tfg.shuttlego.activities.person.passenger.PassengerMain;
 import tfg.shuttlego.model.event.Event;
 import tfg.shuttlego.model.event.EventDispatcher;
+import tfg.shuttlego.model.session.HashPassword;
 import tfg.shuttlego.model.session.Session;
 import tfg.shuttlego.model.transfer.person.Person;
 import tfg.shuttlego.model.transfer.person.TypePerson;
 
+@SuppressWarnings("JavaDoc")
 public class RegisterMain extends AppCompatActivity implements View.OnClickListener {
 
     private ProgressBar registerMainProgress;
@@ -144,7 +149,8 @@ public class RegisterMain extends AppCompatActivity implements View.OnClickListe
             String email = this.registerMainTextEmail.getText().toString();
             String name = this.registerMainTextName.getText().toString();
             String surname = this.registerMainTextSurname.getText().toString();
-            String password = this.registerMainTextPassword.getText().toString();
+
+            String password = hashedPassword(this.registerMainTextPassword.getText().toString());
 
             Integer phone = Integer.parseInt(this.registerMainTextPhone.getText().toString());
 
@@ -160,10 +166,22 @@ public class RegisterMain extends AppCompatActivity implements View.OnClickListe
             user.put("user", json);
         }
         catch (NumberFormatException e) { throwToast(R.string.errPhoneNumber); }
-        catch (JSONException e) { throwToast(R.string.err); }
+        catch (JSONException | InvalidKeySpecException | NoSuchAlgorithmException e) { throwToast(R.string.err); }
 
         return user;
     }
+
+    /**
+     * Generated a hash password to new user
+     *
+     * @param p the new password
+     *
+     * @return the hashed password
+     *
+     * @throws InvalidKeySpecException
+     * @throws NoSuchAlgorithmException
+     */
+    private String hashedPassword(String p) throws InvalidKeySpecException, NoSuchAlgorithmException { return new HashPassword().generatePassword(p); }
 
     /**
      * Throw the event that allow create a new user
