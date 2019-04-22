@@ -16,8 +16,8 @@
      */
 
     const functions = require("firebase-functions");
-    const index = require("./index");
-    const originSA = require("../service_application/originSA");
+    const index = require("./common");
+    const originSA = require("../service_application/origin_SA");
 
      /**
      * @description Get a list of id and name origins.

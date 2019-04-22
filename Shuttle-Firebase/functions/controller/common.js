@@ -6,7 +6,7 @@
      * 
      */
 
-    const personSA = require("../service_application/personSA");
+    const personSA = require("../service_application/person_SA");
     const ERROR = require("../errors/errors");
 
     /**

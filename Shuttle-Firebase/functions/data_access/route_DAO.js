@@ -154,7 +154,8 @@
 
             routeIds.forEach(id => promises.push(getRouteById(id)));
 
-            return Promise.all(promises,(routes)=>{console.log(routes)})
+            return Promise.all(promises);
+        })
             .then((routes) => {
 
                 return routes.map((route,i) => {

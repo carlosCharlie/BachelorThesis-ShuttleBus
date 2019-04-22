@@ -12,8 +12,8 @@
      */
 
     const functions = require("firebase-functions");
-    const index = require("./index");
-    const personSA = require("../service_application/personSA");
+    const index = require("./common");
+    const personSA = require("../service_application/person_SA");
 
     /**
      * @description Check the correct login of a user in the application.
