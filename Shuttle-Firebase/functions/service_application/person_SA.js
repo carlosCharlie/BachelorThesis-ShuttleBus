@@ -9,13 +9,14 @@
     const ERROR = require("../errors/errors");
     const originDAO = require("../data_access/person_DAO");
 
-    function signIn(email) {
+    function signIn(email, password) {
 
         return personDAO.getUser(email)
         .then(user => {
 
             if (user == null) throw ERROR.userDoesntExists;
-            else return user;
+            else if (user.password == password) return user;
+            else throw ERROR.incorrectSignin;
         });
     }
 
@@ -44,7 +45,7 @@
             if(user == null) reject(ERROR.necessaryDataIsNull);
             else resolve();
         })
-        .then(() => signIn(user.email))
+        .then(() => signIn(user.email, user.password))
         .then((result) => {
 
             if(result == null || (userType != null && ( result.type == null || result.type != userType))) throw ERROR.noPermissions;

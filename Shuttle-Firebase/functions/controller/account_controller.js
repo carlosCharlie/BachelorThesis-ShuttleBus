@@ -24,7 +24,7 @@
 
         return index.checkData(data)
         .then(() => index.checkUser(data.user))
-        .then(() => personSA.signIn(data.user.email))
+        .then(() => personSA.signIn(data.user.email, data.user.password))
         .then(result => result, error => error);
     });
     

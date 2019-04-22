@@ -2,7 +2,7 @@
      * 
      * @module controller
      * 
-     * @description Controller all functions about origin object [create, delete, modify and read]
+     * @description Controller all functions about route object [create, delete and read]
      * 
      * Example to build functions:
      * 
@@ -20,87 +20,86 @@
     const index = require("./common");
     const routeSA = require("../service_application/route_SA");
 
-  exports.createRoute = functions.https.onCall((data, context) => {
+    exports.createRoute = functions.https.onCall((data, context) => {
 
-    return index.checkData(data)
-    .then(() => index.checkData(data.route))
-    .then(() => index.checkUser(data.user, "driver"))
-    .then((fullUser) => {
+      return index.checkData(data)
+      .then(() => index.checkData(data.route))
+      .then(() => index.checkUser(data.user, "driver"))
+      .then((fullUser) => {
 
-      data.route.driver = fullUser.id; 
+        data.route.driver = fullUser.id; 
 
-      return routeSA.createRoute(data.route); 
+        return routeSA.createRoute(data.route); 
+      })
+      .then((id) => { return {id: id} }, error => error);
     })
-    .then((id) => { return {id: id} }, error => error);
-  })
-  
-  exports.searchRoute = functions.https.onCall((data, context) => {
 
-    return index.checkData(data)
-    .then(() => index.checkData(data.route))
-    .then(() => index.checkData(data.route.origin))
-    .then(() => index.checkData(data.route.destination))
-    .then(() => routeSA.searchRoutes(data.route.origin,data.route.destination))
-    .then((routes) => { return {routes: routes}}, error => error);
-  })
+    exports.searchRoute = functions.https.onCall((data, context) => {
 
-  exports.addToRoute = functions.https.onCall((data, context) => {
-
-    return index.checkData(data)
-    .then(() => index.checkData(data.route))
-    .then(() => index.checkData(data.address))
-    .then(() => index.checkUser(data.user))
-    .then(() => index.checkData(data.coordinates))
-    .then(() => routeSA.addToRoute(data.user, data.route, data.address, data.coordinates))
-    .then(() => { return {added: true} }, error => error);
-
-  });
-  
-  exports.getRouteById = functions.https.onCall((data, context) => {
-
-    return index.checkData(data)
-    .then(() => index.checkData(data.route))
-    .then(() => index.checkData(data.route.id))
-    .then(() => {
-
-      if(data.user != undefined && data.user != null) return index.checkUser(data.user);
-      else return null;
+      return index.checkData(data)
+      .then(() => index.checkData(data.route))
+      .then(() => index.checkData(data.route.origin))
+      .then(() => index.checkData(data.route.destination))
+      .then(() => routeSA.searchRoutes(data.route.origin,data.route.destination))
+      .then((routes) => { return {routes: routes}}, error => error);
     })
-    .then(() => routeSA.getRouteById(data.route.id,data.user != undefined && data.user != null ? data.user : null))
-    .then((route) => route, error => error);
-  })
-  
-  exports.removePassengerFromRoute = functions.https.onCall((data, context) => {
 
-    return index.checkData(data)
-    .then(() => index.checkData(data.route))
-    .then(() => index.checkUser(data.user,"passenger"))
-    .then(() => routeSA.removePassengerFromRoute(data.user,data.route))
-    .then(() => { return { removed: true} }, error => error);
-  })
-  
-  exports.removeRoute = functions.https.onCall((data, context) => {
+    exports.addToRoute = functions.https.onCall((data, context) => {
 
-    return index.checkData(data)
-    .then(() => index.checkData(data.route))
-    .then(() => index.checkUser(data.user,"driver"))
-    .then(() => routeSA.removeRoute(data.user,data.route))
-    .then(() => { return {removed: true} }, error => error);
-  })
-  
-  exports.getRoutesByUser = functions.https.onCall((data, context) => {
-     
-    return index.checkData(data)
-    .then(() => index.checkUser(data.user))
-    .then(() => routeSA.getRoutesByUser(data.user))
-    .then((routes) => { return {routes: routes[0]} }, error => error);
-  })
-  
-  exports.getRoutePoints = functions.https.onCall((data, context) => {
-     
-    return index.checkData(data)
-    .then(() => index.checkData(data.route))
-    .then(() => index.checkUser(data.user,"driver"))
-    .then(() => routeSA.getRoutePoints(data.route,data.user))
-    .then((points) => { return {points: points}}, error => error);
-  })
+      return index.checkData(data)
+      .then(() => index.checkData(data.route))
+      .then(() => index.checkData(data.address))
+      .then(() => index.checkUser(data.user))
+      .then(() => index.checkData(data.coordinates))
+      .then(() => routeSA.addToRoute(data.user, data.route, data.address, data.coordinates))
+      .then(() => { return {added: true} }, error => error);
+    });
+
+    exports.getRouteById = functions.https.onCall((data, context) => {
+
+      return index.checkData(data)
+      .then(() => index.checkData(data.route))
+      .then(() => index.checkData(data.route.id))
+      .then(() => {
+
+        if(data.user != undefined && data.user != null) return index.checkUser(data.user);
+        else return null;
+      })
+      .then(() => routeSA.getRouteById(data.route.id,data.user != undefined && data.user != null ? data.user : null))
+      .then((route) => route, error => error);
+    });
+
+    exports.removePassengerFromRoute = functions.https.onCall((data, context) => {
+
+      return index.checkData(data)
+      .then(() => index.checkData(data.route))
+      .then(() => index.checkUser(data.user,"passenger"))
+      .then(() => routeSA.removePassengerFromRoute(data.user,data.route))
+      .then(() => { return { removed: true} }, error => error);
+    });
+
+    exports.removeRoute = functions.https.onCall((data, context) => {
+
+      return index.checkData(data)
+      .then(() => index.checkData(data.route))
+      .then(() => index.checkUser(data.user,"driver"))
+      .then(() => routeSA.removeRoute(data.user,data.route))
+      .then(() => { return {removed: true} }, error => error);
+    })
+
+    exports.getRoutesByUser = functions.https.onCall((data, context) => {
+        
+      return index.checkData(data)
+      .then(() => index.checkUser(data.user))
+      .then(() => routeSA.getRoutesByUser(data.user))
+      .then((routes) => { return {routes: routes[0]} }, error => error);
+    })
+
+    exports.getRoutePoints = functions.https.onCall((data, context) => {
+        
+      return index.checkData(data)
+      .then(() => index.checkData(data.route))
+      .then(() => index.checkUser(data.user,"driver"))
+      .then(() => routeSA.getRoutePoints(data.route,data.user))
+      .then((points) => { return {points: points}}, error => error);
+    })
