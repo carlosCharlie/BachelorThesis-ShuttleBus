@@ -7,9 +7,9 @@
      */
 
     const ERROR = require("../errors/errors");
-    const originDAO = require("../data_access/route_DAO");
-    const originDAO = require("../data_access/origin_DAO");
-    const originDAO = require("../data_access/person_DAO");
+    const routeDao = require("../data_access/route_DAO");
+    const originDao = require("../data_access/origin_DAO");
+    const personDao = require("../data_access/person_DAO");
 
     function createRoute(route) {
 
@@ -104,7 +104,7 @@
 
             if (!route) throw ERROR.routeDoesntExists;
             else  if (route.passengers.length >= route.max) throw ERROR.routeSoldOut;
-            else if (route.passengers.indexOf(passenger.id) != -1) throw ERROR.userAlreadyAdded;
+            else if (route.passengers.commonOf(passenger.id) != -1) throw ERROR.userAlreadyAdded;
             else return routeDao.addToRoute(passenger.id, route, address, coordinates);
         })
     }

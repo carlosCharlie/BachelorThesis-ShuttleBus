@@ -8,7 +8,7 @@
     */
 
     const ERROR = require("../errors/errors");
-    const db = require("./database.js");
+    const db = require("./database.js.js");
 
     function insertRoute(newData) {
 
@@ -156,15 +156,14 @@
 
             return Promise.all(promises);
         })
-            .then((routes) => {
+        .then((routes) => {
 
-                return routes.map((route,i) => {
+            return routes.map((route,i) => {
 
-                    let newRute = route;
-                    newRute.destinationName = destinationNames[i];
+                let newRute = route;
+                newRute.destinationName = destinationNames[i];
 
-                    return newRute;
-                })
+                return newRute;
             })
         })
         .then((routes => {

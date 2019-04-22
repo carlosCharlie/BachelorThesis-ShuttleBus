@@ -100,14 +100,28 @@ public class LoginMain extends AppCompatActivity implements View.OnClickListener
         try {
 
             String email = this.loginMainTextEmail.getText().toString();
+            String password = hashedPassword(this.loginMainTextPassword.getText().toString());
 
             json.put("email", email);
+            json.put("password", password);
             user.put("user", json);
 
-        } catch (JSONException e) { throwToast(R.string.err); }
+        } catch (JSONException | InvalidKeySpecException | NoSuchAlgorithmException e) { throwToast(R.string.err); }
 
         return user;
     }
+
+    /**
+     * Generated a hash password to new user
+     *
+     * @param p the new password
+     *
+     * @return the hashed password
+     *
+     * @throws InvalidKeySpecException
+     * @throws NoSuchAlgorithmException
+     */
+    private String hashedPassword(String p) throws InvalidKeySpecException, NoSuchAlgorithmException { return new HashPassword().generatePassword(p); }
 
     /**
      * Throw the event that allow to check the user credentials and start the application.
@@ -137,34 +151,13 @@ public class LoginMain extends AppCompatActivity implements View.OnClickListener
             }
             else {
 
-                try {
-
-                    if (validatePassword(task.getResult().get("password"), this.loginMainTextPassword.getText().toString())) {
-
-                        Person user = parserTypePerson(task.getResult());
-                        Session.getInstance().setUser(user);
-                        startActivity(new Intent(LoginMain.this, this.loginMainNextClass));
-                        finish();
-                    }
-                    else throwToast(R.string.errIncorrectSignin);
-
-                } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {throwToast(R.string.err);}
+                Person user = parserTypePerson(task.getResult());
+                Session.getInstance().setUser(user);
+                startActivity(new Intent(LoginMain.this, this.loginMainNextClass));
+                finish();
             }
         });
     }
-
-    /**
-     * Validate the the user´s password
-     *
-     * @param storedPassword password saved in data base
-     * @param inputPassword password introduced for current user
-     *
-     * @return the validation os password
-     *
-     * @throws InvalidKeySpecException
-     * @throws NoSuchAlgorithmException
-     */
-    private boolean validatePassword(String storedPassword, String inputPassword) throws InvalidKeySpecException, NoSuchAlgorithmException { return new HashPassword().validatePassword(storedPassword, inputPassword); }
 
     /**
      * Parser the credential to the new user.
