@@ -1,19 +1,13 @@
 package tfg.shuttlego.model.event;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.functions.FirebaseFunctions;
-import com.google.firebase.functions.HttpsCallableResult;
 import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Objects;
 
-/**
- * Access the business data to create the content of the view with respect to the returned data.
- */
 public class EventDispatcher {
 
     private static EventDispatcher ourInstance = null;
@@ -21,11 +15,6 @@ public class EventDispatcher {
 
     private EventDispatcher() {}
 
-    /**
-     *
-     * @param applicationContext
-     * @return
-     */
     public static EventDispatcher getInstance(Context applicationContext) {
 
         if(ourInstance == null){
@@ -38,12 +27,6 @@ public class EventDispatcher {
         return ourInstance;
     }
 
-    /**
-     *
-     * @param event
-     * @param data
-     * @return
-     */
     public Task<HashMap<String,String>> dispatchEvent(Event event, JSONObject data){
 
         switch(event){
@@ -79,6 +62,6 @@ public class EventDispatcher {
 
         return this.mFunctions
         .getHttpsCallable(nameFunction).call(data)
-        .continueWith(task-> (HashMap<String,String>)Objects.requireNonNull(task.getResult()).getData());
+        .continueWith(task -> (HashMap<String,String>)Objects.requireNonNull(task.getResult()).getData());
     }
 }
