@@ -1,10 +1,10 @@
-Aplicación para la gestión de shuttle buses
+# Aplicación para la gestión de shuttle buses
 
-Trabajo de Fin de Grado
+## Trabajo de Fin de Grado
 
-<img align=center src='media/image63.png' width='20%' height='20%'>
+<img align=center src='media/image63.png' width='50%' height='50%'>
 
-MEMORIA DE TRABAJO DE FIN DE GRADO
+## MEMORIA DE TRABAJO DE FIN DE GRADO
 
 Carlos Castellanos Mateo
 
@@ -1181,7 +1181,7 @@ Figura 2. Modelo Entidad-Relación
 > automáticamente por Firestore se ha decidido organizar los datos de la
 > siguiente forma para evitar inconsistencias (Figura 3):
 
-<img align=center src='media/image49.png' width='20%' height='20%'>
+<img align=center src='media/image49.png' width='80%' height='80%'>
 
 > Figura 3. Esquema de la base de datos.
 > 
@@ -1255,7 +1255,7 @@ Figura 2. Modelo Entidad-Relación
         > datos, se decidió que tener este atributo era una mejor opción
         > por motivos de eficiencia.
 
-<img align=center src='media/image36.png' width='20%' height='20%'>
+<img align=center src='media/image36.png'>
 
 > Figura 6. Documento *route* en Firebase.
 
@@ -1305,7 +1305,7 @@ interactuar con la base de datos. El diálogo entre cliente y servidor se
 realiza mediante peticiones https. De esta forma, la aplicación tendría
 la estructura que se muestra en la Figura 8:
 
-> <img align=center src='media/image10.png' width='20%' height='20%'>
+> <p align="center" <img align=center src='media/image10.png'></p>
 > 
 > Figura 8. Arquitectura de la aplicación.
 
@@ -1313,7 +1313,7 @@ El cliente está desarrollado siguiendo una arquitectura multicapa
 formada por dos capas: actividad y modelo. En la Figura 9 se muestra un
 esquema de la arquitectura del cliente:
 
-<img align=center src='media/image5.png' width='20%' height='20%'>
+<p align="center" <img align=center src='media/image5.png'></p>
 
 Figura 9. Arquitectura del cliente
 
