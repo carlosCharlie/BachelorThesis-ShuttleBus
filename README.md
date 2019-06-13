@@ -1,4 +1,4 @@
-<p align="center"> This is a summary of all the report, for the full version please visit de <a href="https://github.com/carlosCharlie/BachelorThesis-ShuttleBus/wiki/ShuttleGo-full-report">wiki</a>
+<p align="center"> This is a summary of all the report, for the full version please visit de <a href="https://github.com/carlosCharlie/BachelorThesis-ShuttleBus/wiki/SuhttleGo-full-report>wiki"</a>
 <p align="center">(Generated from the original docx file)</p>
 <h1 align="center">Aplicación para la gestión de shuttle buses</h1>
 
