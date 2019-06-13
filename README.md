@@ -1,23 +1,18 @@
-(Generated from the original docx file)
-<p align="center"> <h1>Aplicación para la gestión de shuttle buses</h1> </p>
+<p align="center">(Generated from the original docx file)</p>
+<h1 align="center">Aplicación para la gestión de shuttle buses</h1>
 
-## Trabajo de Fin de Grado
-
+<h2 align="center">Trabajo de Fin de Grado</h2>
 <p align="center"> <img src='media/image63.png' width='50%' height='50%'> </p>
 
-### Trabajo de fin de grado del Grado en Ingeniería de Software.
-### Facultad de informática, Universidad Complutense de Madrid.
-### 2018-2019
-Carlos Castellanos Mateo
-
+<h2 align="center">Trabajo de fin de grado del Grado en Ingeniería de Software.</h2>
+<h2 align="center"> Facultad de informática, Universidad Complutense de Madrid.</h2>
+<h2 align="center"> 2018-2019</h2>
+Carlos Castellanos Mateo <br>
 Víctor Chamizo Rodríguez
- <br><br>
+ <br><br><br>
 Director:
 
 Antonio Sarasa Cabezuelo
-
-*Memoria destinada a comprender el desarrollo del Trabajo de Fin de
-Grado*
 
 
 ## 
