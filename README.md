@@ -104,7 +104,7 @@ cómo poder acceder a cada uno de ellos.
 > *regístrate* que está situado debajo del botón *iniciar sesión*
 > (Figura AP-6).
 > 
-> <img align=center src='media/image17.png' width='20%' height='20%'>
+> <img align=center src='media/image17.png' width='30%' height='30%'>
 
 Figura AP-6. Inicio de sesión
 
@@ -132,7 +132,7 @@ Figura AP-6. Inicio de sesión
 > referente a los datos personales, en la que únicamente se debe
 > introducir el nombre, apellido/s y el número de teléfono del usuario.
 
-<img align=center src='media/image18.png' width='20%' height='20%'><img align=center src='media/image54.png' width='20%' height='20%'>
+<img align=center src='media/image18.png' width='30%' height='30%'><img align=center src='media/image54.png' width='30%' height='30%'>
 
 Figura AP-7. Registro 1 Figura AP-8. Registro 2
 
@@ -168,7 +168,7 @@ reseña del punto de origen que se desea establecer. La segunda parte de
 la interfaz está compuesta por un editor de texto en el que se introduce
 el nombre que se quiere dar al origen (Figura AP-9).
 
-<img align=center src='media/image14.png' width='20%' height='20%'><img align=center src='media/image45.png' width='20%' height='20%'>
+<img align=center src='media/image14.png' width='30%' height='30%'><img align=center src='media/image45.png' width='30%' height='30%'>
 
 Figura AP-9 . Interfaz administrador Figura AP-10. Interfaz origen
 
@@ -194,11 +194,11 @@ a un listado de todos los orígenes disponibles, con la posibilidad de
 pulsar sobre cualquiera de ellos y acceder a las funcionalidades de
 origen anteriormente descritas (Figura AP-14).
 
-<img align=center src='media/image1.png' width='20%' height='20%'><img align=center src='media/image29.png' width='20%' height='20%'>
+<img align=center src='media/image1.png' width='30%' height='30%'><img align=center src='media/image29.png' width='30%' height='30%'>
 
 Figura AP-11 . Editar origen Figura AP-12. Origen editado
 
-<img align=center src='media/image60.png' width='20%' height='20%'><img align=center src='media/image41.png' width='20%' height='20%'>
+<img align=center src='media/image60.png' width='30%' height='30%'><img align=center src='media/image41.png' width='30%' height='30%'>
 
 ##### 
 
@@ -209,7 +209,7 @@ Figura AP-13 . Menú administrador Figura AP-14 . Listado de orígenes
 El rol de conductor es el encargado de crear nuevos trayectos para que
 los pasajeros puedan contratarlos.
 
-<img align=center src='media/image34.png' width='20%' height='20%'><img align=center src='media/image59.png' width='20%' height='20%'>
+<img align=center src='media/image34.png' width='30%' height='30%'><img align=center src='media/image59.png' width='30%' height='30%'>
 
 Figura AP-15 . Interfaz conductor Figura AP-16. Interfaz ruta conductor
 
@@ -239,7 +239,7 @@ llegar hasta ellos; tras este proceso se renderizará un mapa con la ruta
 pintada sobre él (Figura AP-18) y nos dará la opción de *comenzar* el
 trayecto.
 
-<img align=center src='media/image24.png' width='20%' height='20%'><img align=center src='media/image61.png' width='20%' height='20%'>
+<img align=center src='media/image24.png' width='30%' height='30%'><img align=center src='media/image61.png' width='30%' height='30%'>
 
 Figura AP-17. Calculando ruta Figura AP-18. Comenzar ruta
 
@@ -256,7 +256,7 @@ tiene el conductor en ese momento. En dicho listado es posible pulsar
 sobre cualquiera de los trayectos accediendo de esta forma a las
 diferentes opciones de ruta citadas anteriormente.
 
-<img align=center src='media/image21.png' width='20%' height='20%'><img align=center src='media/image37.png' width='20%' height='20%'>
+<img align=center src='media/image21.png' width='30%' height='30%'><img align=center src='media/image37.png' width='30%' height='30%'>
 
 Figura AP-19. Menú conductor Figura AP-20. Listado rutas
 
@@ -275,12 +275,12 @@ pulsando sobre el botón *buscar trayecto*, tras lo cual se mostrará una
 lista con las diferentes rutas disponibles según los datos anteriormente
 introducidos (Figura AP-22).
 
-<img align=center src='media/image58.png' width='20%' height='20%'><img align=center src='media/image16.png' width='20%' height='20%'>
+<img align=center src='media/image58.png' width='30%' height='30%'><img align=center src='media/image16.png' width='30%' height='30%'>
 
 Figura AP-21. Interfaz pasajero Figura AP-22. Listado de viajes
 disponibles
 
-<img align=center src='media/image42.png' width='20%' height='20%'><img align=center src='media/image12.png' width='20%' height='20%'>
+<img align=center src='media/image42.png' width='30%' height='30%'><img align=center src='media/image12.png' width='30%' height='30%'>
 
 Figura AP-23. Información ruta Figura AP-24. Menú pasajero
 
@@ -299,7 +299,7 @@ pulsar sobre un trayecto de la lista, automáticamente se muestra la
 información de dicho trayecto junto con la posibilidad de *cancelar
 ruta* (Figura AP-26).
 
-<img align=center src='media/image4.png' width='20%' height='20%'><img align=center src='media/image31.png' width='20%' height='20%'>
+<img align=center src='media/image4.png' width='30%' height='30%'><img align=center src='media/image31.png' width='30%' height='30%'>
 
 Figura AP-25.- Listado rutas pasajero Figura AP-26. Interfaz ruta
 pasajero
